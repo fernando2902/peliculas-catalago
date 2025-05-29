@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Catálogo de Películas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <button id="btnRegistro" class="nav-btn active">Registro</button>
+        <button id="btnCatalogo" class="nav-btn">Catálogo</button>
+    </nav>
+
+    <main>
+        <!-- Sección de Registro -->
+        <section id="registro" class="section active">
+            <h2>Registro de Películas</h2>
+            <form id="movieForm">
+                <div class="form-group">
+                    <label for="coverImage">Imagen de Portada:</label>
+                    <input type="file" id="coverImage" accept="image/*" required>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="movieName">Nombre de la Película:</label>
+                    <input type="text" id="movieName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descripción:</label>
+                    <textarea id="description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Géneros:</label>
+                    <div class="genres-grid">
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Acción">
+                            <span>Acción</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Aventura">
+                            <span>Aventura</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Comedia">
+                            <span>Comedia</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Drama">
+                            <span>Drama</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Terror">
+                            <span>Terror</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Ciencia ficción">
+                            <span>Ciencia ficción</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Romance">
+                            <span>Romance</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Animación">
+                            <span>Animación</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Documental">
+                            <span>Documental</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Fantasía">
+                            <span>Fantasía</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Misterio">
+                            <span>Misterio</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Musical">
+                            <span>Musical</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Suspense">
+                            <span>Suspense</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Thriller">
+                            <span>Thriller</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="Western">
+                            <span>Western</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer">URL del Trailer (YouTube):</label>
+                    <input type="url" id="trailer" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Año:</label>
+                    <input type="number" id="year" name="year" min="1900" max="2030" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quality">Calidad:</label>
+                    <select id="quality" required>
+                        <option value="720P">720P</option>
+                        <option value="1080P">1080P</option>
+                        <option value="CAM">CAM</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="isNewRelease">
+                        Es Estreno
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Guardar Película</button>
+            </form>
+
+            <div id="registeredMovies" class="registered-movies">
+                <h3>Películas Registradas</h3>
+                <div id="moviesList" class="movies-list"></div>
+            </div>
+        </section>
+
+        <!-- Sección de Catálogo -->
+        <section id="catalogo" class="section">
+            <div class="catalog-controls">
+                <div class="search-filters">
+                    <input type="text" id="searchInput" placeholder="Buscar película...">
+                    <select id="genreFilter">
+                        <option value="">Todos los géneros</option>
+                        <option value="Acción">Acción</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Comedia">Comedia</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Ciencia ficción">Ciencia ficción</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Animación">Animación</option>
+                        <option value="Documental">Documental</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Misterio">Misterio</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Western">Western</option>
+                    </select>
+                    <select id="qualityFilter">
+                        <option value="">Todas las calidades</option>
+                        <option value="720P">720P</option>
+                        <option value="1080P">1080P</option>
+                        <option value="CAM">CAM</option>
+                    </select>
+                    <select id="yearFilter">
+                        <option value="">Todos los años</option>
+                    </select>
+                    <select id="releaseFilter">
+                        <option value="">Todos los estrenos</option>
+                        <option value="true">Solo estrenos</option>
+                    </select>
+                    <select id="viewsFilter">
+                        <option value="">Ordenar por vistas</option>
+                        <option value="most">Más vistas</option>
+                        <option value="least">Menos vistas</option>
+                    </select>
+                </div>
+                <div class="catalog-actions">
+                    <button id="exportCatalog" class="action-btn">Exportar Catálogo</button>
+                    <button id="importCatalog" class="action-btn">Importar Catálogo</button>
+                    <button id="generateHtmlCatalog" class="action-btn html-btn">
+                        <i class="html-icon">🌐</i> Generar Catálogo HTML
+                    </button>
+                    <button id="shareWhatsApp" class="action-btn whatsapp-btn">
+                        <i class="whatsapp-icon">📱</i> Compartir por WhatsApp
+                    </button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+            </div>
+            <div id="catalogGrid" class="catalog-grid"></div>
+        </section>
+    </main>
+
+    <!-- Modal para mostrar detalles de la película -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
